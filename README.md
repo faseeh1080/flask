@@ -1,6 +1,8 @@
-# Flask
+# Flask Example
 
 This is my second Flask project. I hope you find it useful!
+
+The official documentation uses Sqlite whereas this app uses MySQL. If you want to use Sqlite instead, go check the [official documentation](https://flask.palletsprojects.com/en/stable/tutorial/database/).
 
 # Setup
 
