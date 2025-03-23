@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, jsonify
 
 
 def create_app(test_config=None):
@@ -24,9 +24,13 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    from . import db
+    db.init_app(app)
+
+    @app.route('/db')
+    def index():
+        cursor = db.get_cursor()
+        cursor.execute("SELECT * FROM users")
+        return jsonify(cursor.fetchall())
 
     return app
